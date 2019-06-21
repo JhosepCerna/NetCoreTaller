@@ -1,0 +1,30 @@
+﻿@model List<Tsp.AppWebVenta.Models.ReporteViewModel>
+
+<div class="container">
+    <h2>LISTA DE VENTAS REALIZADAS</h2>
+    <p>Esta es la lista de todas las ventas realizadas hasta el dia de hoy.</p>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Código de Venta</th>
+                <th>Fecha</th>
+                <th>Monto Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>@item.nombreView</td>
+                    <td>@item.apellidoView</td>
+                    <td>@item.codigoView</td>
+                    <td>@item.fechaView.ToString("dd-MM-yyyy")</td>
+                    <td>@item.montoTotalView</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

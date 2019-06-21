@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.452
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentacion", "Presentacion", "{376AD03C-F909-46F4-82F2-916C82547765}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tsp.AppWebVenta", "Tsp.AppWebVenta\Tsp.AppWebVenta.csproj", "{BA7853E9-E445-4BCC-B06E-34D21653ADB8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA7853E9-E445-4BCC-B06E-34D21653ADB8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA7853E9-E445-4BCC-B06E-34D21653ADB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA7853E9-E445-4BCC-B06E-34D21653ADB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA7853E9-E445-4BCC-B06E-34D21653ADB8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA7853E9-E445-4BCC-B06E-34D21653ADB8} = {376AD03C-F909-46F4-82F2-916C82547765}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B544C837-DA8F-477C-AA72-09233784F444}
+	EndGlobalSection
+EndGlobal

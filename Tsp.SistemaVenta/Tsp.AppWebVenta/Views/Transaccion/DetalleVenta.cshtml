@@ -1,0 +1,45 @@
+﻿@model  IEnumerable<Tsp.AppWebVenta.Models.Producto>
+
+    <div class="container">
+        <div class="row">
+            <h2>Agergar productos para terminar la venta</h2>
+            <form class="form-horizontal" action="/Transaccion/DetalleVenta" method="post">
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="c1">Código de Venta</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="c1" name="codigoOperacion" value="@ViewBag.Codigo">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="sel1">Seleccionar un producto*</label>
+                    <div class="col-sm-9">
+                        <select class="form-control" id="sel1" name="productoSelect">
+                            <option>Seleccionar...</option>
+                            @foreach (var item in Model)
+                            {
+                                <option>@item.nombre</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-sm-3" for="b1">Cantidad*</label>
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control" id="b1" name="cantidad">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-9">
+                        <button type="submit" class="btn btn-primary">Registrar al carrito de venta</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <div class="col-sm-offset-3 col-sm-9">
+                    <a href="/Transaccion/ReporteVenta/@ViewBag.Codigo" class="btn btn-danger">Terminar la Venta</a>
+                </div>
+            </div>
+        </div>
+    </div>
