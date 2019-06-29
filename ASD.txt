@@ -1,0 +1,42 @@
+var config = new ConfigurationBuilder()
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("hosting.json", optional: true)
+        .Build();
+ 
+    var host = new WebHostBuilder()
+        .UseKestrel()
+        .UseConfiguration(config)
+        .UseContentRoot(Directory.GetCurrentDirectory())
+        .UseStartup<Startup>()
+        .Build();
+ 
+    host.Run();
+
+***********************************
+"server.urls": "http://localhost:5123"
+
+
+*********************************
+server {
+    listen 80;
+    location / {
+        proxy_pass http://localhost:5123;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection keep-alive;
+        proxy_set_header Host $host;
+        proxy_cache_bypass $http_upgrade;
+    }
+}
+
+**********************************************
+[program:dotnettest]
+command=/usr/bin/dotnet /var/dotnettest/dotnettest.dll --server.urls:http://*:5123
+directory=/var/dotnettest/
+autostart=true
+autorestart=true
+stderr_logfile=/var/log/dotnettest.err.log
+stdout_logfile=/var/log/dotnettest.out.log
+environment=ASPNETCORE_ENVIRONMENT=Production
+user=www-data
+stopsignal=INT
