@@ -11,20 +11,20 @@ namespace Tsp.AppWebVenta.LogicaNegocio
     {
         private ProductoRepository productoLogica;
 
-        public void RegistrarProducto(VentaDB db, Producto prod)
+        public void RegistrarProducto(TestVentaContext db, Producto prod)
         {
             productoLogica = new ProductoRepository(db);
             productoLogica.Agregar(prod);
         }
 
-        public IEnumerable<Producto> ListarProductos(VentaDB db)
+        public IEnumerable<Producto> ListarProductos(TestVentaContext db)
         {
             productoLogica = new ProductoRepository(db);
             IEnumerable<Producto> listaProducto = productoLogica.Mostrar();
             return listaProducto;
         }
 
-        public Producto BuscarProducto(VentaDB db, string nombreProd)
+        public Producto BuscarProducto(TestVentaContext db, string nombreProd)
         {
             productoLogica = new ProductoRepository(db);
             Producto productoSearch = productoLogica.Buscar(nombreProd);

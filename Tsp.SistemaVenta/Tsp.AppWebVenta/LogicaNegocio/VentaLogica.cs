@@ -11,37 +11,37 @@ namespace Tsp.AppWebVenta.LogicaNegocio
     {
         private VentaRepository ventaLogica;
 
-        public void RegistrarVenta(VentaDB db, Venta vent)
+        public void RegistrarVenta(TestVentaContext db, Venta vent)
         {
             ventaLogica = new VentaRepository(db);
             ventaLogica.Agregar(vent);
         }
 
-        public void RegistrarDetalleVenta(VentaDB db, DetalleVenta detvent)
+        public void RegistrarDetalleVenta(TestVentaContext db, DetalleVenta detvent)
         {
             ventaLogica = new VentaRepository(db);
             ventaLogica._Agregar(detvent);
         }
 
-        private float ConvertirAlTotal(VentaDB db, string codigoOperac)
+        private float ConvertirAlTotal(TestVentaContext db, string codigoOperac)
         {
             ventaLogica = new VentaRepository(db);
             IEnumerable<DetalleVenta> montosubtotal = ventaLogica.ObtenerSubTotal(Convert.ToInt32(codigoOperac));
             float totalDetVen = 0f;
             foreach (var item in montosubtotal)
             {
-                totalDetVen += item.subTotal;
+                totalDetVen += (float)item.SubTotal;
             }
             return totalDetVen;
         }
 
-        public void EditarMontoTotal(VentaDB db, string idOperac) {
+        public void EditarMontoTotal(TestVentaContext db, string idOperac) {
             ventaLogica = new VentaRepository(db);
             float montoEditar = ConvertirAlTotal(db, idOperac);
             ventaLogica.ActualizarMontoTotal(Convert.ToInt32(idOperac), montoEditar);
         }
 
-        public List<ReporteViewModel> ListarVentas(VentaDB db) {
+        public List<ReporteViewModel> ListarVentas(TestVentaContext db) {
             ventaLogica = new VentaRepository(db);
             List<ReporteViewModel> list = ventaLogica.MostrarVentas();
             return list;

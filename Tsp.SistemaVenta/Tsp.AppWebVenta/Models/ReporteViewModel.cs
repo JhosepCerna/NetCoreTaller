@@ -10,10 +10,10 @@ namespace Tsp.AppWebVenta.Models
         public string nombreView { get; set; }
         public string apellidoView { get; set; }
         public int codigoView { get; set; }
-        public DateTime fechaView { get; set; }
-        public float montoTotalView { get; set; }
+        public DateTime? fechaView { get; set; }
+        public float? montoTotalView { get; set; }
 
-        public ReporteViewModel(string nombreView, string apellidoView, int codigoView, DateTime fechaView, float montoTotalView)
+        public ReporteViewModel(string nombreView, string apellidoView, int codigoView, DateTime? fechaView, float? montoTotalView)
         {
             this.nombreView = nombreView;
             this.apellidoView = apellidoView;

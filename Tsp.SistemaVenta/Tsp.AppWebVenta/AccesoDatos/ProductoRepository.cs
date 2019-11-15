@@ -9,9 +9,9 @@ namespace Tsp.AppWebVenta.AccesoDatos
 {
     public class ProductoRepository
     {
-        private readonly VentaDB _context;
+        private readonly TestVentaContext _context;
 
-        public ProductoRepository(VentaDB context)
+        public ProductoRepository(TestVentaContext context)
         {
             _context = context;
         }
@@ -19,14 +19,14 @@ namespace Tsp.AppWebVenta.AccesoDatos
         // Agregar un PRODUCTO
         public void Agregar(Producto p)
         {
-            _context.producto.Add(p);
+            _context.Producto.Add(p);
             _context.SaveChanges();
         }
 
         // Busca el ID del PRODUCTO
         public Producto Buscar(string name)
         {
-            Producto productoDato = _context.producto.FirstOrDefault(c => c.nombre.Equals(name));
+            Producto productoDato = _context.Producto.FirstOrDefault(c => c.Nombre.Equals(name));
             _context.SaveChanges();
             return productoDato;
         }
@@ -34,7 +34,7 @@ namespace Tsp.AppWebVenta.AccesoDatos
         // Mostrar todo los PRODUCTOS
         public IEnumerable<Producto> Mostrar()
         {
-            var lista = _context.producto.OrderBy(a => a.nombre);
+            var lista = _context.Producto.OrderBy(a => a.Nombre);
             _context.SaveChanges();
             return lista;
         }

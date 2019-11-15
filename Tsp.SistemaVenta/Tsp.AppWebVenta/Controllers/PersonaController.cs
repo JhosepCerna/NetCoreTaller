@@ -11,10 +11,10 @@ namespace Tsp.AppWebVenta.Controllers
 {
     public class PersonaController : Controller
     {
-        private readonly VentaDB _con;
+        private readonly TestVentaContext _con;
         private ClienteLogica cli;
 
-        public PersonaController(VentaDB con)
+        public PersonaController(TestVentaContext con)
         {
             _con = con;
         }
@@ -31,14 +31,14 @@ namespace Tsp.AppWebVenta.Controllers
                 cli = new ClienteLogica();
                 Cliente cl = new Cliente
                 {
-                    nombre = nombre,
-                    apellidos = apellido,
-                    telefono = telefono,
-                    dni = dni,
-                    edad = Convert.ToInt32(edad)
+                    Nombre = nombre,
+                    Apellidos = apellido,
+                    Telefono = telefono,
+                    Dni = dni,
+                    Edad = Convert.ToInt32(edad)
                 };
                 cli.RegistrarCliente(_con, cl);
-                return RedirectToAction("Venta", "Transaccion", new { ID = cl.dni });
+                return RedirectToAction("Venta", "Transaccion", new { ID = cl.Dni });
             }
             catch (Exception)
             {

@@ -11,10 +11,10 @@ namespace Tsp.AppWebVenta.Controllers
 {
     public class MercaderiaController : Controller
     {
-        private readonly VentaDB _con;
+        private readonly TestVentaContext _con;
         private ProductoLogica pro;
 
-        public MercaderiaController(VentaDB con)
+        public MercaderiaController(TestVentaContext con)
         {
             _con = con;
         }
@@ -31,8 +31,8 @@ namespace Tsp.AppWebVenta.Controllers
                 pro = new ProductoLogica();
                 Producto pr = new Producto
                 {
-                    nombre = nombre,
-                    precioUnitario = Convert.ToSingle(precioUnitario)
+                    Nombre = nombre,
+                    PrecioUnitario = Convert.ToSingle(precioUnitario)
                 };
                 pro.RegistrarProducto(_con, pr);
                 return View();

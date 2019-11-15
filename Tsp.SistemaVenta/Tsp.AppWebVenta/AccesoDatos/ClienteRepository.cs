@@ -8,29 +8,29 @@ namespace Tsp.AppWebVenta.AccesoDatos
 {
     public class ClienteRepository
     {
-        private readonly VentaDB _context;
+        private readonly TestVentaContext _context;
 
-        public ClienteRepository(VentaDB context)
+        public ClienteRepository(TestVentaContext context)
         {
             _context = context;
         }
 
         // Agregar un CLIENTE
         public void Agregar(Cliente c) {
-            _context.cliente.Add(c);
+            _context.Cliente.Add(c);
             _context.SaveChanges();
         }
 
         // Buscar por IDCLIENTE
         public Cliente Buscar(string id) {
-            Cliente clienteDatos = _context.cliente.FirstOrDefault(c => c.dni.Equals(id));
+            Cliente clienteDatos = _context.Cliente.FirstOrDefault(c => c.Dni.Equals(id));
             _context.SaveChanges();
             return clienteDatos;
         }
 
         // Obtener todo los CLIENTES
         public List<Cliente> Mostrar() {
-            List<Cliente> lista = _context.cliente.ToList();
+            List<Cliente> lista = _context.Cliente.ToList();
             _context.SaveChanges();
             return lista;
         }

@@ -11,12 +11,12 @@ namespace Tsp.AppWebVenta.Controllers
 {
     public class TransaccionController : Controller
     {
-        private readonly VentaDB _con;
+        private readonly TestVentaContext _con;
         private ClienteLogica clienteVenta;
         private VentaLogica ventaOperacion;
         private ProductoLogica productoVenta;
 
-        public TransaccionController(VentaDB con)
+        public TransaccionController(TestVentaContext con)
         {
             _con = con;
         }
@@ -45,12 +45,12 @@ namespace Tsp.AppWebVenta.Controllers
                 ventaOperacion = new VentaLogica();
                 Venta ve = new Venta
                 {
-                    idCliente = IDCliente.id,
-                    fecha = Convert.ToDateTime(fecha),
-                    montoTotal = 0.00f
+                    IdCliente = IDCliente.Id,
+                    Fecha = Convert.ToDateTime(fecha),
+                    MontoTotal = 0.00f
                 };
                 ventaOperacion.RegistrarVenta(_con, ve);
-                return RedirectToAction("DetalleVenta", "Transaccion", new { ID = ve.id });
+                return RedirectToAction("DetalleVenta", "Transaccion", new { ID = ve.Id });
             }
             catch (Exception)
             {
@@ -84,10 +84,10 @@ namespace Tsp.AppWebVenta.Controllers
                 ventaOperacion = new VentaLogica();
                 DetalleVenta deve = new DetalleVenta
                 {
-                    idProducto = IDProducto.id,
-                    idVenta = Convert.ToInt32(codigoOperacion),
-                    subTotal = Convert.ToInt32(cantidad) * IDProducto.precioUnitario,
-                    cantidad = Convert.ToInt32(cantidad)
+                    IdProducto = IDProducto.Id,
+                    IdVenta = Convert.ToInt32(codigoOperacion),
+                    SubTotal = Convert.ToInt32(cantidad) * IDProducto.PrecioUnitario,
+                    Cantidad = Convert.ToInt32(cantidad)
                 };
                 ventaOperacion.RegistrarDetalleVenta(_con, deve);
                 return RedirectToAction("DetalleVenta", "Transaccion", new { ID = codigoOperacion });

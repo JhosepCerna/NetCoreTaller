@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Tsp.AppWebVenta.AccesoDatos;
+using Tsp.AppWebVenta.Models;
 
 namespace Tsp.AppWebVenta
 {
@@ -25,7 +25,7 @@ namespace Tsp.AppWebVenta
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<VentaDB>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<TestVentaContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.

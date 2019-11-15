@@ -1,18 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Tsp.AppWebVenta.Models
 {
-    public class DetalleVenta
+    public partial class DetalleVenta
     {
-        [Key]
-        public int id { get; set; }
-        public int? idProducto { get; set; }
-        public int? idVenta { get; set; }
-        public float subTotal { get; set; }
-        public int cantidad { get; set; }
+        public int Id { get; set; }
+        public int IdProducto { get; set; }
+        public int IdVenta { get; set; }
+        public float? SubTotal { get; set; }
+        public int? Cantidad { get; set; }
+
+        public Producto IdProductoNavigation { get; set; }
+        public Venta IdVentaNavigation { get; set; }
     }
 }

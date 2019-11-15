@@ -11,13 +11,13 @@ namespace Tsp.AppWebVenta.LogicaNegocio
     {
         private ClienteRepository clienteLogica;
 
-        public void RegistrarCliente(VentaDB db, Cliente clien)
+        public void RegistrarCliente(TestVentaContext db, Cliente clien)
         {
             clienteLogica = new ClienteRepository(db);
             clienteLogica.Agregar(clien);
         }
 
-        public Cliente BuscarCliente(VentaDB db, string identidad) {
+        public Cliente BuscarCliente(TestVentaContext db, string identidad) {
             clienteLogica = new ClienteRepository(db);
             Cliente clienteSearch = clienteLogica.Buscar(identidad);
             return clienteSearch;
